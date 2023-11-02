@@ -1,0 +1,30 @@
+.content{
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.img{
+    width: 270px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.div{
+    display: flex;
+    flex-direction: column;
+    margin: 3%;
+}
+
+.span_info{
+    margin-bottom: 2px;
+    color: #9c9c9c;
+    font-weight: lighter;
+}
+
+.span_title{
+    font-weight: medium;
+}
+
+.card{
+    width: 100%;
+}

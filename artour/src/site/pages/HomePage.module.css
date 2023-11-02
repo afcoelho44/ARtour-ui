@@ -1,0 +1,32 @@
+.section{
+    margin: 5% 0 5% 0;
+}
+
+.eventos{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.a{
+    color: #000000;
+    text-decoration: none;
+    display: flex;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+.a:hover{
+    color: #000000;
+    box-shadow: 1px 1px 3px #cccccc;
+}
+
+.card{
+    margin: 2%;
+}
+
+.img{
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
