@@ -1,0 +1,40 @@
+.navbar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+    background-color: #222;
+}
+
+.img{
+    height: auto;
+    width: 80%;
+}
+
+.list{
+    list-style: none;
+    width: 100%;
+    padding-left: 0;
+}
+
+.item{
+    padding: 1em;
+    font-size: large;
+    color: #efefef;
+    border-bottom: #efefef 1px solid;
+}
+
+.a{
+    text-decoration: none;
+}
+
+.item:hover{
+    color: #222;
+    background-color: #efefef;
+}
+
+.header{
+    width: 100%;
+    background-color: #ffff99;
+}

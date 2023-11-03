@@ -1,0 +1,22 @@
+.container {
+    width: 100%;
+    margin: 2%;
+    padding: 1%;
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1px #d9d9d9 solid;
+}
+
+.start {
+    justify-content: flex-start;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.center{
+    justify-content: center;
+}
