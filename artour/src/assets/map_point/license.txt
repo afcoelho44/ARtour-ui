@@ -1,0 +1,11 @@
+Model Information:
+* title:	Map Point
+* source:	https://sketchfab.com/3d-models/map-point-837ad8ab50d24ee3a768c1ecd33c51c7
+* author:	fijaya (https://sketchfab.com/fijaya)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Map Point" (https://sketchfab.com/3d-models/map-point-837ad8ab50d24ee3a768c1ecd33c51c7) by fijaya (https://sketchfab.com/fijaya) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
