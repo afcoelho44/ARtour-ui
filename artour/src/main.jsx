@@ -12,6 +12,7 @@ import UserListPage from "./painel/pages/UserListPage.jsx";
 import UserRegisterPage from "./painel/pages/UserRegisterPage.jsx";
 import UserEditPage from "./painel/pages/UserEditPage.jsx";
 import UserViewPage from "./painel/pages/UserViewPage.jsx";
+import CreateEstablishment from "./site/pages/CreateEstablishment.jsx";
 
 const router = createBrowserRouter([
   {
@@ -29,33 +30,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/pesquisa",
-        element: <SearchPage />
+        element: <SearchPage />,
       },
       {
         path: "/painel",
-        element: <PainelPage />
+        element: <PainelPage />,
       },
       {
         path: "/painel/usuario",
-        element: <UserListPage />
+        element: <UserListPage />,
       },
       // Rota dinâmica
       {
         path: "/estabelecimento/:id",
-        element: <EstablishmentPage/>
+        element: <EstablishmentPage />,
       },
       {
         path: "/painel/usuario/cadastro",
-        element: <UserRegisterPage />
+        element: <UserRegisterPage />,
       },
       {
         path: "/painel/usuario/:id/editar",
-        element: <UserEditPage />
+        element: <UserEditPage />,
       },
       {
         path: "/painel/usuario/:id/visualizar",
-        element: <UserViewPage />
-      }
+        element: <UserViewPage />,
+      },
+      {
+        path: "/painel/estabelecimento/cadastro",
+        element: <CreateEstablishment />,
+      },
     ],
   },
 ]);
