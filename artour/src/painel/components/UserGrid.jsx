@@ -25,7 +25,6 @@ function UserGrid({ usersList, onUserSelected }) {
 
   const userHandleSelected = ({ selectedRows }) => {
     onUserSelected = selectedRows;
-    console.log('Selected Rows: ', selectedRows);
   };
 
   return (

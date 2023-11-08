@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import UserGrid from "../components/UserGrid";
-import { getAllUsersApi } from "../../api/Services";
+import UserGrid from "../../components/UserGrid";
+import { getAllUsersApi } from "../../../api/Services";
 
 function UserListPage() {
   const [users, setUsers] = useState([]);
@@ -34,7 +34,7 @@ function UserListPage() {
         <Button variant="info">Visualizar Usuário</Button>{" "}
       </Link>
       <Button variant="danger">
-          Excluir Evento
+          Excluir Usuário
         </Button>{" "}
       <hr />
       <UserGrid usersList={users} onUserSelected={setUserSelected} />

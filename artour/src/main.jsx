@@ -8,10 +8,10 @@ import SearchPage from "./site/pages/SearchPage.jsx";
 import ErrorPage from "./site/pages/ErrorPage.jsx";
 import EstablishmentPage from "./site/pages/EstablishmentPage.jsx";
 import PainelPage from "./painel/pages/PainelPage.jsx";
-import UserListPage from "./painel/pages/UserListPage.jsx";
-import UserRegisterPage from "./painel/pages/UserRegisterPage.jsx";
-import UserEditPage from "./painel/pages/UserEditPage.jsx";
-import UserViewPage from "./painel/pages/UserViewPage.jsx";
+import UserListPage from "./painel/pages/user/UserListPage.jsx";
+import UserRegisterPage from "./painel/pages/user/UserRegisterPage.jsx";
+import UserEditPage from "./painel/pages/user/UserEditPage.jsx";
+import UserViewPage from "./painel/pages/user/UserViewPage.jsx";
 import CreateEstablishment from "./site/pages/CreateEstablishment.jsx";
 
 const router = createBrowserRouter([

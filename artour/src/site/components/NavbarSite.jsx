@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import Container from "react-bootstrap/Container";
 
 function NavbarSite() {
@@ -21,15 +22,25 @@ function NavbarSite() {
         <Navbar.Toggle aria-controls="navbarToggle" />
         <Navbar.Collapse id="navbarToggle" className="justify-content-end">
           <Nav>
-            <Link to="/">
-              <Nav.Link href="/">Página Inicial</Nav.Link>
-            </Link>
-            <Link to="/pesquisa">
-              <Nav.Link href="/pesquisa">Pesquisa</Nav.Link>
-            </Link>
-            <Link to="/login">
-              <Nav.Link href="/login">Login</Nav.Link>
-            </Link>
+            <Nav.Link href="/">Página Inicial</Nav.Link>
+            <Nav.Link href="/pesquisa">Pesquisa</Nav.Link>
+            <Nav.Link href="/login">Login</Nav.Link>
+            <NavDropdown title="Administrador" id="basic-nav-dropdown">
+              <NavDropdown.Item href="/painel/usuario">
+                Usuários
+              </NavDropdown.Item>
+              <NavDropdown.Item href="INFORMAR ROTA">
+                Categoria
+              </NavDropdown.Item>
+              <NavDropdown.Item href="INFORMAR ROTA">
+                Ponto Turístico
+              </NavDropdown.Item>
+              <NavDropdown.Item href="INFORMAR ROTA">
+                Curadoria
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="INFORMAR FUNÇÃO">Sair</NavDropdown.Item>
+            </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Container>
