@@ -33,9 +33,7 @@ function UserListPage() {
       <Link to={`/painel/usuario/${userSelected?.id}/visualizar`}>
         <Button variant="info">Visualizar Usuário</Button>{" "}
       </Link>
-      <Button variant="danger">
-          Excluir Usuário
-        </Button>{" "}
+      <Button variant="danger">Excluir Usuário</Button>{" "}
       <hr />
       <UserGrid usersList={users} onUserSelected={setUserSelected} />
     </>

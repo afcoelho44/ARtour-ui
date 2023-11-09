@@ -24,7 +24,9 @@ function UserGrid({ usersList, onUserSelected }) {
   }));
 
   const userHandleSelected = ({ selectedRows }) => {
-    onUserSelected = selectedRows;
+    selectedRows.map((user) => {
+      onUserSelected(user);
+    })
   };
 
   return (
@@ -33,6 +35,7 @@ function UserGrid({ usersList, onUserSelected }) {
       data={data}
       selectableRows
       onSelectedRowsChange={userHandleSelected}
+      selectableRowsSingle
     />
   );
 }
