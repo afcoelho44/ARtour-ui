@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import UserGrid from "../../components/UserGrid";
-import { getAllUsersApi } from "../../../api/Services";
+import { deleteUserApi, getAllUsersApi } from "../../../api/Services";
 
 function UserListPage() {
   const [users, setUsers] = useState([]);
@@ -20,6 +20,14 @@ function UserListPage() {
       .catch((erro) => console.log(erro));
   }
 
+  function deleteUser() {
+    deleteUserApi(userSelected.id)
+      .then(() => {
+        getUsersList();
+      })
+      .catch((erro) => console.log(erro));
+  }
+
   return (
     <>
       <h3>Usuários do Sistema</h3>
@@ -33,7 +41,9 @@ function UserListPage() {
       <Link to={`/painel/usuario/${userSelected?.id}/visualizar`}>
         <Button variant="info">Visualizar Usuário</Button>{" "}
       </Link>
-      <Button variant="danger">Excluir Usuário</Button>{" "}
+      <Button variant="danger" onClick={deleteUser}>
+        Excluir Usuário
+      </Button>{" "}
       <hr />
       <UserGrid usersList={users} onUserSelected={setUserSelected} />
     </>

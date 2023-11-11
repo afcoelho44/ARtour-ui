@@ -20,24 +20,24 @@ function UserRegisterPage() {
     saveUser();
   };
 
-  function recoverUser(){
+  function recoverUser() {
     const User = {
-        name: name,
-        isAdmin: true,
-        phone: phone,
-        email: email,
-        password: password
-    }
+      name: name,
+      admin: true,
+      phone: phone,
+      email: email,
+      password: password,
+    };
     setNewUser(User);
   }
 
-  function saveUser(){
+  function saveUser() {
     saveUserApi(newUser)
       .then(() => {
         navigate("/painel/usuario");
         console.log("Usuario registrado: " + newUser);
       })
-      .catch(console.log("Usuário não foi salvo: " + newUser));
+      .catch((erro) => console.log(erro));
   }
 
   return (
