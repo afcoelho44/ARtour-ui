@@ -1,5 +1,4 @@
 import DataTable from "react-data-table-component";
-import { useState } from "react";
 
 function UserGrid({ usersList, onUserSelected }) {
   const columns = [

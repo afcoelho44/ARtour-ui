@@ -3,10 +3,14 @@ import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import UserGrid from "../../components/UserGrid";
 import { deleteUserApi, getAllUsersApi } from "../../../api/Services";
+import ModalConfirm from "../../components/ModalConfirm.jsx";
 
 function UserListPage() {
   const [users, setUsers] = useState([]);
   const [userSelected, setUserSelected] = useState(null);
+  const [openModal, setOpenModal] = useState(false);
+  const [confirmModal, setConfirmModal] = useState(false);
+  const mensage = "Tem certeza que você deseja excluir o usuário ?";
 
   useEffect(() => {
     getUsersList();
@@ -21,6 +25,7 @@ function UserListPage() {
   }
 
   function deleteUser() {
+    setOpenModal(false);
     deleteUserApi(userSelected.id)
       .then(() => {
         getUsersList();
@@ -41,11 +46,19 @@ function UserListPage() {
       <Link to={`/painel/usuario/${userSelected?.id}/visualizar`}>
         <Button variant="info">Visualizar Usuário</Button>{" "}
       </Link>
-      <Button variant="danger" onClick={deleteUser}>
+      <Button variant="danger" onClick={() => setOpenModal(true)}>
         Excluir Usuário
       </Button>{" "}
       <hr />
       <UserGrid usersList={users} onUserSelected={setUserSelected} />
+      {openModal && (
+        <ModalConfirm
+          mensage={mensage}
+          onConfirm={deleteUser}
+          open={openModal}
+          setClose={setOpenModal}
+        />
+      )}
     </>
   );
 }
