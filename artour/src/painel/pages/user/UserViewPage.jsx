@@ -18,7 +18,6 @@ function UserViewPage() {
     getUserByIdApi(id)
       .then((response) => {
         setValues(response.data);
-        console.log();
       })
       .catch((error) => {
         console.error(error);

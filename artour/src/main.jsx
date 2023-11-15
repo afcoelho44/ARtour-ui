@@ -13,6 +13,9 @@ import UserRegisterPage from "./painel/pages/user/UserRegisterPage.jsx";
 import UserEditPage from "./painel/pages/user/UserEditPage.jsx";
 import UserViewPage from "./painel/pages/user/UserViewPage.jsx";
 import CreateEstablishment from "./site/pages/CreateEstablishment.jsx";
+import CurationListPage from "./painel/pages/curation/CurationListPage.jsx";
+import CurationViewPage from "./painel/pages/curation/CurationViewPage.jsx";
+import CurationAnalyzePage from "./painel/pages/curation/CurationAnalyzePage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +63,18 @@ const router = createBrowserRouter([
       {
         path: "/painel/estabelecimento/cadastro",
         element: <CreateEstablishment />,
+      },
+      {
+        path: "/painel/curadoria",
+        element: <CurationListPage />,
+      },
+      {
+        path: "/painel/curadoria/:id/visualizar",
+        element: <CurationViewPage />,
+      },
+      {
+        path: "/painel/curadoria/:id/analise",
+        element: <CurationAnalyzePage />,
       },
     ],
   },

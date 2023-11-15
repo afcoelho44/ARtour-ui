@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
-import UserGrid from "../../components/UserGrid";
+import UserGrid from "./UserGrid.jsx";
 import { deleteUserApi, getAllUsersApi } from "../../../api/Services";
 import ModalConfirm from "../../components/ModalConfirm.jsx";
 

@@ -35,7 +35,7 @@ function NavbarSite() {
               <NavDropdown.Item href="INFORMAR ROTA">
                 Ponto Turístico
               </NavDropdown.Item>
-              <NavDropdown.Item href="INFORMAR ROTA">
+              <NavDropdown.Item href="/painel/curadoria">
                 Curadoria
               </NavDropdown.Item>
               <NavDropdown.Divider />
