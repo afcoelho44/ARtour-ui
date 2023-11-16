@@ -5,6 +5,7 @@ const clientApi = axios.create({
   headers: { "Content-Type": "application/json" },
 });
 
+// (-----------------Users----------------------)
 export const getAllUsersApi = () => clientApi.get(`/api/user/all`);
 
 export const saveUserApi = (newUser) =>
@@ -17,6 +18,7 @@ export const updateUserApi = (id, user) =>
 
 export const deleteUserApi = (id) => clientApi.delete(`/api/user/delete/${id}`);
 
+// (------------------Commments---------------------)
 export const getAllCommentsApi = () => clientApi.get(`/api/comentary/all`);
 
 export const getCommentByIdApi = (id) => clientApi.get(`/api/comentary/${id}`);
@@ -27,3 +29,15 @@ export const approvedCommentApi = (id, approved) =>
       return approved;
     },
   });
+// (---------------------Establishment------------------------------)
+export const getAllEstablishmentApi = () => clientApi.get(`/api/establishment/all`);
+
+export const getEstablishmentByIdApi = (id) => clientApi.get(`/api/establishment/${id}`);
+
+export const saveEstablishmentApi = (newEstablishment) =>
+  clientApi.post(`/api/establishment/create`, newEstablishment);
+
+export const updateEstablishmentApi = (id, establishment) =>
+  clientApi.put(`/api/establishment/update/${id}`, establishment);
+
+export const deleteEstablishmentApi = (id) => clientApi.delete(`/api/establishment/delete/${id}`);
