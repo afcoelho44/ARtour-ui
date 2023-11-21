@@ -1,5 +1,8 @@
-import MapComponent from "../components/formsEstablishment/MapComponent";
 import { useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
+import "leaflet/dist/leaflet.css";
+import "../pages/CreateEstablishment.css";
 import { Link } from "react-router-dom";
 import { saveEstablishmentApi } from "../../api/Services";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
@@ -87,6 +90,13 @@ export default function CreateEstablishment() {
           <Form.Label>Atrações</Form.Label>
           <Form.Control type="text" placeholder="Atrações" />
         </Form.Group>
+
+        <MapContainer center={[-27.0559, -49.5209]} zoom={15}>
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+        </MapContainer>
 
         <Row>
           <div className="col-md-6">
