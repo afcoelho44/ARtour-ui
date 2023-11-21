@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import ModalConfirm from "../../components/ModalConfirm";
 import { approvedCommentApi, getCommentByIdApi } from "../../../api/Services";
 
 function CurationAnalyzePage() {
@@ -14,6 +15,9 @@ function CurationAnalyzePage() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [approved, setApproved] = useState("");
+  const [openModal, setOpenModal] = useState(false);
+  const [codeApproved, setCodeApproved] = useState();
+  const mensage = "Você deseja confirmar a operação ?";
 
   useEffect(() => {
     getCommentByIdApi(id)
@@ -33,8 +37,8 @@ function CurationAnalyzePage() {
     setApproved(comment.approved);
   };
 
-  const handlerSubmit = async (approvedCode) => {
-    switch(approvedCode){
+  const handlerSubmit = async () => {
+    switch (codeApproved) {
       case 1:
         setApprovedComment(1);
         break;
@@ -56,7 +60,7 @@ function CurationAnalyzePage() {
 
   return (
     <>
-      <h3>Visualização de Comentário</h3>
+      <h3>Análise de Comentário</h3>
       <hr />
       <Form>
         <Form.Group className="mb-3">
@@ -88,13 +92,33 @@ function CurationAnalyzePage() {
         <Link to="/painel/curadoria">
           <Button variant="warning">Voltar</Button>{" "}
         </Link>
-        <Button variant="danger" onClick={() => handlerSubmit(1)}>
+        <Button
+          variant="danger"
+          onClick={() => {
+            setCodeApproved(1);
+            setOpenModal(true);
+          }}
+        >
           Reprovar Comentário
         </Button>{" "}
-        <Button variant="success" onClick={() => handlerSubmit(2)}>
+        <Button
+          variant="success"
+          onClick={() => {
+            setCodeApproved(2);
+            setOpenModal(true);
+          }}
+        >
           Aprovar Comentário
         </Button>{" "}
       </Form>
+      {openModal && (
+        <ModalConfirm
+          mensage={mensage}
+          onConfirm={handlerSubmit}
+          open={openModal}
+          setClose={() => setOpenModal(false)}
+        />
+      )}
     </>
   );
 }

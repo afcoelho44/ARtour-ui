@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getUserByIdApi, updateUserApi } from "../../../api/Services";
+import ModalConfirm from "../../components/ModalConfirm";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -14,6 +15,8 @@ function UserEditPage() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUser] = useState();
+  const [openModal, setOpenModal] = useState(false);
+  const mensage = "Você deseja confirmar a alteração ?";
 
   // Vai buscar na API o usuário que corresponde ao id
   useEffect(() => {
@@ -41,16 +44,18 @@ function UserEditPage() {
     setUser(user);
   };
 
-  function recoveredUser(){
+  function recoveredUser() {
     user.name = name;
     user.phone = phone;
     user.email = email;
   }
 
-  function updateUser(){
-    updateUserApi(idUser, user).then(() => {
+  function updateUser() {
+    updateUserApi(idUser, user)
+      .then(() => {
         navigate("/painel/usuario");
-    }).catch((erro) => console.log(erro))
+      })
+      .catch((erro) => console.log(erro));
   }
 
   return (
@@ -92,10 +97,18 @@ function UserEditPage() {
         <Link to="/painel/usuario">
           <Button variant="danger">Cancelar</Button>{" "}
         </Link>
-        <Button variant="success" onClick={handlerSubmit}>
+        <Button variant="success" onClick={() => setOpenModal(true)}>
           Confirmar
         </Button>{" "}
       </Form>
+      {openModal && (
+        <ModalConfirm
+          mensage={mensage}
+          onConfirm={handlerSubmit}
+          open={openModal}
+          setClose={() => setOpenModal(false)}
+        />
+      )}
     </>
   );
 }

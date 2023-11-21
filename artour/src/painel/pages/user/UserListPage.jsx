@@ -25,7 +25,6 @@ function UserListPage() {
   }
 
   function deleteUser() {
-    setOpenModal(false);
     deleteUserApi(userSelected.id)
       .then(() => {
         getUsersList();
@@ -56,7 +55,7 @@ function UserListPage() {
           mensage={mensage}
           onConfirm={deleteUser}
           open={openModal}
-          setClose={setOpenModal}
+          setClose={() => setOpenModal(false)}
         />
       )}
     </>

@@ -13,20 +13,20 @@ function ModalConfirm({ mensage, onConfirm, open, setClose }) {
 
   return (
     <>
-      <Modal show={openModal} onHide={setCloseModal}>
+      <Modal show={openModal} onHide={setClose}>
         <Modal.Header closeButton>
           <Modal.Title>Atenção !</Modal.Title>
         </Modal.Header>
         <Modal.Body>{mensageModal}</Modal.Body>
         <Modal.Footer>
-          <Button variant="warning" onClick={setCloseModal}>
+          <Button variant="warning" onClick={setClose}>
             Fechar
           </Button>
           <Button
             variant="danger"
             onClick={() => {
               onConfirm();
-              setCloseModal();
+              setClose;
             }}
           >
             Confirmar
