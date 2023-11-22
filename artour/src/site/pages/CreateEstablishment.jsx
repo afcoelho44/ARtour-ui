@@ -5,7 +5,32 @@ import "leaflet/dist/leaflet.css";
 import "../pages/CreateEstablishment.css";
 import { Link } from "react-router-dom";
 import { saveEstablishmentApi } from "../../api/Services";
+import { useMapEvents } from "react-leaflet/hooks";
 import { Form, Button, Container, Row, Col, Alert } from "react-bootstrap";
+// import { saveEstablishmentApi } from "../";
+
+const customIcon = new Icon({
+  iconUrl: "/src/assets/imgs/pointMap.png",
+  iconSize: [40, 40],
+});
+
+export function MyComponent() {
+  const [position, setPosition] = useState(null);
+  const map = useMapEvents({
+    click: () => {
+      map.locate();
+    },
+    locationfound: (location) => {
+      setPosition(location.latlng);
+      console.log(position);
+    },
+  });
+  return position === null ? null : (
+    <Marker position={position} icon={customIcon}>
+      <Popup> Sua posição</Popup>
+    </Marker>
+  );
+}
 
 export default function CreateEstablishment() {
   const [name, setName] = useState("");
@@ -96,6 +121,7 @@ export default function CreateEstablishment() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <MyComponent />
         </MapContainer>
 
         <Row>
