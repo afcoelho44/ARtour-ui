@@ -16,6 +16,7 @@ function UserRegisterPage() {
 
   const handlerSubmit = async (event) => {
     //PODEM HAVER VALIDAÇÕES NO FORMULÁRIO
+    // event.preventDefault();
     recoverUser();
     saveUser();
   };
