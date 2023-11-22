@@ -9,7 +9,6 @@ function UserListPage() {
   const [users, setUsers] = useState([]);
   const [userSelected, setUserSelected] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  const [confirmModal, setConfirmModal] = useState(false);
   const mensage = "Tem certeza que você deseja excluir o usuário ?";
 
   useEffect(() => {
@@ -30,6 +29,7 @@ function UserListPage() {
         getUsersList();
       })
       .catch((erro) => console.log(erro));
+    setOpenModal(false);
   }
 
   return (
