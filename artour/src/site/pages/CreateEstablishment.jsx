@@ -17,11 +17,8 @@ const customIcon = new Icon({
 export function MyComponent() {
   const [position, setPosition] = useState(null);
   const map = useMapEvents({
-    click: () => {
-      map.locate();
-    },
-    locationfound: (location) => {
-      setPosition(location.latlng);
+    click(e) {
+      setPosition([e.latlng.lat, e.latlng.lng]);
       console.log(position);
     },
   });
