@@ -29,13 +29,13 @@ function NavbarSite() {
               <NavDropdown.Item href="/painel/usuario">
                 Usuários
               </NavDropdown.Item>
-              <NavDropdown.Item href="INFORMAR ROTA">
+              <NavDropdown.Item href="/painel/categoria">
                 Categoria
               </NavDropdown.Item>
               <NavDropdown.Item href="INFORMAR ROTA">
                 Ponto Turístico
               </NavDropdown.Item>
-              <NavDropdown.Item href="/painel/curadoria">
+              <NavDropdown.Item href="/painel/categories/categoria">
                 Curadoria
               </NavDropdown.Item>
               <NavDropdown.Divider />
