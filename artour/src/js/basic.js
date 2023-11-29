@@ -1,6 +1,22 @@
+import axios from "axios";
+
+const clientApi = axios.create({
+  baseURL: "http://localhost:8080",
+  headers: { "Content-Type": "application/json" },
+});
+
+
+const getAllEstablishmentApi = () => clientApi.get(`/api/establishment/all`).then((res) => {
+  return res.data;
+  });
+
 window.onload = () => {
-  console.log("passou!!!");
-  let testeEntityAdded = false;
+
+  let establishmentList = getAllEstablishmentApi();
+ 
+  console.log(establishmentList);
+  
+   let testeEntityAdded = false;
 
   const el = document.querySelector("[gps-new-camera]");
 

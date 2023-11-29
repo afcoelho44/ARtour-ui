@@ -23,7 +23,7 @@ function NavbarSite() {
         <Navbar.Collapse id="navbarToggle" className="justify-content-end">
           <Nav>
             <Nav.Link href="/">Página Inicial</Nav.Link>
-            <Nav.Link href="/teste.html">Pesquisa</Nav.Link>
+            <Nav.Link href="/SeachRA.html">Pesquisa</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
             <NavDropdown title="Administrador" id="basic-nav-dropdown">
               <NavDropdown.Item href="/painel/usuario">
