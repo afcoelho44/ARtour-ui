@@ -16,6 +16,7 @@ import CreateEstablishment from "./site/pages/CreateEstablishment.jsx";
 import CurationListPage from "./painel/pages/curation/CurationListPage.jsx";
 import CurationViewPage from "./painel/pages/curation/CurationViewPage.jsx";
 import CurationAnalyzePage from "./painel/pages/curation/CurationAnalyzePage.jsx";
+import CreateCategoriaPage from "./painel/pages/categories/CreateCategoriaPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
       {
         path: "/painel/curadoria/:id/analise",
         element: <CurationAnalyzePage />,
+      },
+      {
+        path: "/painel/categoria",
+        element: <CreateCategoriaPage/>,
       },
     ],
   },
