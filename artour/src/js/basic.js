@@ -1,42 +1,54 @@
-import axios from "axios";
+const url = "http://localhost:8080/api/establishment/all";
 
-const clientApi = axios.create({
-  baseURL: "http://localhost:8080",
-  headers: { "Content-Type": "application/json" },
-});
-
-
-const getAllEstablishmentApi = () => clientApi.get(`/api/establishment/all`).then((res) => {
-  return res.data;
-  });
-
+let establishments = [];
+function getEstablishment() {
+  axios
+    .get(url)
+    .then((response) =>
+      response.data.forEach((establishment) => {
+        establishments.push(establishment);
+      })
+    )
+    .catch((erro) => console.log(erro));
+}
 window.onload = () => {
+  getEstablishment();
+  console.log(establishments);
 
-  let establishmentList = getAllEstablishmentApi();
- 
-  console.log(establishmentList);
-  
-   let testeEntityAdded = false;
+  let testeEntityAdded = false;
 
-  const el = document.querySelector("[gps-new-camera]");
+  const entityScale = {
+    x: 9,
+    y: 9,
+    z: 9,
+  };
 
-  el.addEventListener("gps-camera-update-position", (e) => {
-    if (!testeEntityAdded) {
-      alert(
-        `Pegue a primeira posicao: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`
-      );
-      const entity = document.querySelector("a-entity");
-      entity.setAttribute("scale", {
-        x: 9,
-        y: 9,
-        z: 9,
+  // const camera = document.querySelector("[gps-new-camera]");
+  console.log("ate aqui eu chego");
+  // camera.addEventListener("gps-camera-update-position", (e) => {
+  //   console.log("oi ana");
+  //   if (!testeEntityAdded) {
+  //     alert(
+  //       `Pegue a primeira posicao: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`
+  //     );
+
+      const scene = document.querySelector("a-scene");
+
+      establishments.forEach((establishment) => {
+        addEstablishmentInMap(/*adiciona */ establishment /*na*/, scene);
+        console.log(establishment.name + " adicionado na cena");
       });
-      entity.setAttribute("gps-new-entity-place", {
-        latitude: e.detail.position.latitude + 0.001,
-        longitude: e.detail.position.longitude,
-      });
-      document.querySelector("a-scene").append(entity);
     }
-    testeEntityAdded = true;
-  });
-};
+    //testeEntityAdded = true;
+  // });
+
+  function addEstablishmentInMap(establishment, scene) {
+    const entity = document.createElement("a-entity");
+    entity.setAttribute("gps-new-entity-place", {
+      latitude: establishment.latitude,
+      longitude: establishment.longitude,
+    });
+    entity.setAttribute("scale", entityScale);
+    scene.append(entity);
+  }
+// };
