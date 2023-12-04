@@ -71,7 +71,7 @@ export default function FormRegister() {
             <Form.Control
                 type="text"
                 placeholder={latitude}
-                    value={latitude}
+                    defaultValue={latitude}
             />
             </Form.Group>
 
@@ -80,7 +80,7 @@ export default function FormRegister() {
             <Form.Control
                 type="text"
                 placeholder={longitude}
-                value={longitude}
+                defaultValue={longitude}
             />
             </Form.Group>
             <MapSelectLocation/>

@@ -41,3 +41,18 @@ export const updateEstablishmentApi = (id, establishment) =>
   clientApi.put(`/api/establishment/update/${id}`, establishment);
 
 export const deleteEstablishmentApi = (id) => clientApi.delete(`/api/establishment/delete/${id}`);
+
+
+// (---------------------Categories------------------------------)
+
+export const getAllCategoriesApi = () => clientApi.get(`/api/category/all`);
+
+export const getCategoryByIdApi = (id) => clientApi.get(`/api/category/${id}`);
+
+export const saveCategoryApi = (newCategory) =>
+  clientApi.post(`/api/category/create`, newCategory);
+
+export const updateCategoryApi = (id, category) =>
+  clientApi.put(`/api/category/update/${id}`, category);
+
+export const deleteCategoryApi = (id) => clientApi.delete(`/api/category/delete/${id}`);
