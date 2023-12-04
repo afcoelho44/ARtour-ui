@@ -29,6 +29,8 @@ export const approvedCommentApi = (id, approved) =>
       return approved;
     },
   });
+
+export const getApprovedCommentsFromEstablishment = (idEstablishment) => clientApi.get(`/api/comentary/estabishment/${idEstablishment}`);
 // (---------------------Establishment------------------------------)
 export const getAllEstablishmentApi = () => clientApi.get(`/api/establishment/all`);
 
