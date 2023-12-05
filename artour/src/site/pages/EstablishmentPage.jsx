@@ -28,7 +28,10 @@ function EstablishmentPage() {
   const [textComentary, setTextComentary] = useState("");
   const [newComment, setNewComment] = useState();
   const [establishment, setEstablishment] = useState();
-
+  const [latitude, setLatitude] = useState(0);
+  const [longitude, setLongitude] = useState(0);
+  const [tags, setTags] = useState([]); 
+  let url = "";
   useEffect(() => {
     getEstablishmentByIdApi(id)
       .then((response) => {
@@ -52,7 +55,13 @@ function EstablishmentPage() {
     setHours(establishment.hour);
     setCosts(establishment.fees_costs);
     setAttraction(establishment.attractions);
+    setLatitude(establishment.latitude);
+    setLongitude(establishment.longitude);
+    setTags(establishment.tags);
     setEstablishment(establishment);
+
+    url = "https://www.openstreetmap.org/?mlat="+latitude+"&mlon="+longitude+"#map=17/"+latitude+"/"+longitude;
+    console.log(url);
   }
 
   function setCommentsListValue(commentsList) {
@@ -121,6 +130,16 @@ function EstablishmentPage() {
               <p className={styles.title}>Custos:</p>
               <ul>
                 <li>{costs}</li>
+              </ul>
+              <p className={styles.title}>Tags:</p>
+              <ul>
+                {tags.map((tag) => {
+                  return <li key={tag.id}>{tag.title}</li>;
+                })}
+              </ul>
+              <p className={styles.title}>Onde fica?</p>
+              <ul>
+                <li><a href={ url}>Clique Aqui!</a></li>
               </ul>
             </content>
           </Col>
