@@ -9,24 +9,23 @@ function ListCategoryPage() {
   const [categories, setCategories] = useState([]);
   const [categorySelected, setCategorySelected] = useState(null);
   const [openModal, setOpenModal] = useState(false);
-  const mensage = "Tem certeza que você deseja excluir o usuário ?";
+  const mensage = "Tem certeza que você deseja excluir a categoria ?";
 
   useEffect(() => {
     getCategoriesList();
   }, []);
 
   function getCategoriesList() {
-    getAllCategoriesApi()
-      .then((response) => {
-        setCategories(response.data);
-      })
+    getAllCategoriesApi().then((response) => { setCategories(response.data);})
       .catch((erro) => console.log(erro));
+    
+    console.log(categories);
   }
 
   function deleteCategory() {
     deleteCategoryApi(categorySelected.id)
       .then(() => {
-        getUsersList();
+        getCategoriesList();
       })
       .catch((erro) => console.log(erro));
     setOpenModal(false);
@@ -37,16 +36,16 @@ function ListCategoryPage() {
       <h3>Categorias</h3>
       <hr />
       <Link to="/painel/categoria/criar">
-        <Button variant="success">Novo Usuário</Button>{" "}
+        <Button variant="success">Nova Categoria</Button>{" "}
       </Link>
       <Link to={`/painel/categoria/${categorySelected?.id}/editar`}>
-        <Button variant="primary">Alterar Usuário</Button>{" "}
+        <Button variant="primary">Alterar Categoria</Button>{" "}
       </Link>
       <Link to={`/painel/categoria/${categorySelected?.id}/visualizar`}>
-        <Button variant="info">Visualizar Usuário</Button>{" "}
+        <Button variant="info">Visualizar Categoria</Button>{" "}
       </Link>
       <Button variant="danger" onClick={() => setOpenModal(true)}>
-        Excluir Usuário
+        Excluir Categoria
       </Button>{" "}
       <hr />
       <CategoryGrid categoryList={categories} onCategorySelected={setCategorySelected} />

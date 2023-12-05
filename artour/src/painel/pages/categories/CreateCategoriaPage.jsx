@@ -4,20 +4,42 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
-import { saveUserApi } from "../../../api/Services";
+import { saveCategoryApi } from "../../../api/Services";
+
+
 
 export default function CreateCategoriaPage() {
+  const navigate = useNavigate();
   const [nome, setNomeCategoria] = useState('');
+  const [newCategory, setNewCategory]= useState();
 
-  const categoriaLogic = () => {
-    // Lógica da categoria aqui
+  const handlerSubmit = async (event) => {
+    //PODEM HAVER VALIDAÇÕES NO FORMULÁRIO
+    event.preventDefault();
+    recoverUser();
+    saveUser();
   };
 
+  function recoverUser() {
+    const category = {
+      name: nome,
+    };
+    setNewCategory(category);
+  }
+
+  function saveUser() {
+    saveCategoryApi(newCategory)
+      .then(() => {
+        navigate("/painel/categoria/");
+        console.log("Categoria registrada: " + newCategory);
+      })
+      .catch((erro) => console.log(erro));
+  }
   return (
     <>
       <h3>Cadastro de Categoria</h3>
       <hr />
-      <Form>
+      <Form onSubmit={handlerSubmit}>
         <Row className="mb-3">
           <Form.Group as={Col}>
             <Form.Label>Nome:</Form.Label>
@@ -30,7 +52,7 @@ export default function CreateCategoriaPage() {
         <Link to="/painel/categoria/">
           <Button variant="danger">Cancelar</Button>{" "}
         </Link>
-        <Button variant="success" onClick={() => { console.log("oi")}}>
+        <Button variant="success" type='submit'>
           Confirmar
         </Button>{" "}
       </Form>
