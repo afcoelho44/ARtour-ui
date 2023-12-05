@@ -1,7 +1,11 @@
 .user{
-
+    font-weight: lighter;
+    font-size: 14px;
 }
 
 .content{
-    
+    margin: 0px 5% 0px 5%;
+    border: 1px solid #000 ;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
 }

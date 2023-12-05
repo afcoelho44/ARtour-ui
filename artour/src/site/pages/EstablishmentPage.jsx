@@ -9,7 +9,11 @@ import image_example from "../../assets/imgs/establishment_example.jpg";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import ComentaryEstablishment from "../components/ComentaryEstablishment.jsx";
-import { getApprovedCommentsFromEstablishment, getEstablishmentByIdApi } from "../../api/Services";
+import {
+  getApprovedCommentsFromEstablishment,
+  getEstablishmentByIdApi,
+  saveComentaryApi,
+} from "../../api/Services";
 
 function EstablishmentPage() {
   const { id } = useParams();
@@ -20,6 +24,10 @@ function EstablishmentPage() {
   const [costs, setCosts] = useState("");
   const [attractions, setAttraction] = useState("");
   const [commentsList, setCommentsList] = useState([]);
+  const [titleComentary, setTitleComentary] = useState("");
+  const [textComentary, setTextComentary] = useState("");
+  const [newComment, setNewComment] = useState();
+  const [establishment, setEstablishment] = useState();
 
   useEffect(() => {
     getEstablishmentByIdApi(id)
@@ -29,7 +37,7 @@ function EstablishmentPage() {
       .catch((error) => {
         console.log(error);
       });
-      getApprovedCommentsFromEstablishment(id)
+    getApprovedCommentsFromEstablishment(id)
       .then((response) => {
         setCommentsListValue(response.data);
       })
@@ -44,10 +52,38 @@ function EstablishmentPage() {
     setHours(establishment.hour);
     setCosts(establishment.fees_costs);
     setAttraction(establishment.attractions);
+    setEstablishment(establishment);
   }
 
-  function setCommentsListValue(commentsList){
+  function setCommentsListValue(commentsList) {
     setCommentsList(commentsList);
+  }
+
+  const handlerSubmit = async (event) => {
+    recoverComentary();
+    saveComentary();
+  };
+
+  function recoverComentary() {
+    const Comentary = {
+      title: titleComentary,
+      content: textComentary,
+      establishment_id: establishment.id,
+      media: null,
+      approved: 1,
+      user_id: 1,
+    };
+    console.log(Comentary);
+    setNewComment(Comentary);
+  }
+
+  function saveComentary() {
+    saveComentaryApi(newComment)
+      .then(() => {
+        Navigate(".");
+        console.log("Registrado> " + newComment);
+      })
+      .catch((error) => console.log(erro));
   }
 
   return (
@@ -99,16 +135,35 @@ function EstablishmentPage() {
               Deixe a sua experiência, e contribua para a experiencia de outros
               turistas:
             </Form.Label>
-            <Form.Control placeholder="Digite a sua experiência aqui !"/>
+            <Form.Control
+              type="text"
+              placeholder="Digite um título !"
+              onChange={(e) => setTitleComentary(e.target.value)}
+            />
+            <br />
+            <Form.Control
+              type="textarea"
+              placeholder="Digite a sua experiência aqui !"
+              onChange={(e) => setTextComentary(e.target.value)}
+            />
           </Form.Group>
           <br />
-          <Button variant="success">Enviar</Button>
+          <Button variant="success" onClick={handlerSubmit}>
+            Enviar
+          </Button>
         </Form>
         <hr />
-        <p className={styles.title}> Veja as experiências de outros turistas:</p>
-        {commentsList.map((comentary) => {
-          <ComentaryEstablishment comentary={comentary} />
-        })}
+        <p className={styles.title}>
+          {" "}
+          Veja as experiências de outros turistas:
+        </p>
+        <Row>
+          {commentsList.map((comentary) => (
+            <Col>
+              <ComentaryEstablishment comentary={comentary} />
+            </Col>
+          ))}
+        </Row>
       </Container>
     </>
   );

@@ -30,11 +30,17 @@ export const approvedCommentApi = (id, approved) =>
     },
   });
 
-export const getApprovedCommentsFromEstablishment = (idEstablishment) => clientApi.get(`/api/comentary/estabishment/${idEstablishment}`);
-// (---------------------Establishment------------------------------)
-export const getAllEstablishmentApi = () => clientApi.get(`/api/establishment/all`);
+export const getApprovedCommentsFromEstablishment = (idEstablishment) =>
+  clientApi.get(`/api/comentary/estabishment/${idEstablishment}`);
 
-export const getEstablishmentByIdApi = (id) => clientApi.get(`/api/establishment/${id}`);
+export const saveComentaryApi = (newComentary) =>
+  clientApi.post(`/api/comentary/create`, newComentary);
+// (---------------------Establishment------------------------------)
+export const getAllEstablishmentApi = () =>
+  clientApi.get(`/api/establishment/all`);
+
+export const getEstablishmentByIdApi = (id) =>
+  clientApi.get(`/api/establishment/${id}`);
 
 export const saveEstablishmentApi = (newEstablishment) =>
   clientApi.post(`/api/establishment/create`, newEstablishment);
@@ -42,8 +48,8 @@ export const saveEstablishmentApi = (newEstablishment) =>
 export const updateEstablishmentApi = (id, establishment) =>
   clientApi.put(`/api/establishment/update/${id}`, establishment);
 
-export const deleteEstablishmentApi = (id) => clientApi.delete(`/api/establishment/delete/${id}`);
-
+export const deleteEstablishmentApi = (id) =>
+  clientApi.delete(`/api/establishment/delete/${id}`);
 
 // (---------------------Categories------------------------------)
 
@@ -57,4 +63,5 @@ export const saveCategoryApi = (newCategory) =>
 export const updateCategoryApi = (id, category) =>
   clientApi.put(`/api/category/update/${id}`, category);
 
-export const deleteCategoryApi = (id) => clientApi.delete(`/api/category/delete/${id}`);
+export const deleteCategoryApi = (id) =>
+  clientApi.delete(`/api/category/delete/${id}`);
