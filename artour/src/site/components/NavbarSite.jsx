@@ -32,7 +32,7 @@ function NavbarSite() {
               <NavDropdown.Item href="/painel/categoria">
                 Categoria
               </NavDropdown.Item>
-              <NavDropdown.Item href="INFORMAR ROTA">
+              <NavDropdown.Item href="/painel/estabelecimento/todos">
                 Ponto Turístico
               </NavDropdown.Item>
               <NavDropdown.Item href="/painel/curadoria">

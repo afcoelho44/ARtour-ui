@@ -12,7 +12,7 @@ import UserListPage from "./painel/pages/user/UserListPage.jsx";
 import UserRegisterPage from "./painel/pages/user/UserRegisterPage.jsx";
 import UserEditPage from "./painel/pages/user/UserEditPage.jsx";
 import UserViewPage from "./painel/pages/user/UserViewPage.jsx";
-import CreateEstablishment from "./site/pages/CreateEstablishment.jsx";
+import EstablishmentRegister from "./painel/pages/establishments/EstablishmentRegister.jsx";
 import CurationListPage from "./painel/pages/curation/CurationListPage.jsx";
 import CurationViewPage from "./painel/pages/curation/CurationViewPage.jsx";
 import CurationAnalyzePage from "./painel/pages/curation/CurationAnalyzePage.jsx";
@@ -20,6 +20,10 @@ import CreateCategoriaPage from "./painel/pages/categories/CreateCategoriaPage.j
 import ListCategoryPage from "./painel/pages/categories/ListCategoryPage.jsx";
 import CategoryEditPage from "./painel/pages/categories/CategoryEditPage.jsx";
 import CategoryViewPage from "./painel/pages/categories/CategoryViewPage.jsx";
+import EstablishmentListPage from "./painel/pages/establishments/EstablishmentListPage.jsx";
+import EstablishmentViewPage from "./painel/pages/establishments/EstablishmentViewPage.jsx";
+import EstablishmentEditPage from "./painel/pages/establishments/EstablishmentEditPage.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -65,8 +69,20 @@ const router = createBrowserRouter([
         element: <UserViewPage />,
       },
       {
-        path: "/painel/estabelecimento/cadastro",
-        element: <CreateEstablishment />,
+        path: "/painel/estabelecimento/criar",
+        element: <EstablishmentRegister />,
+      },
+      {
+        path: "/painel/estabelecimento/:id/editar",
+        element: <EstablishmentEditPage />,
+      },
+      {
+        path: "/painel/estabelecimento/:id/visualizar",
+        element: <EstablishmentViewPage />,
+      },
+      {
+        path: "/painel/estabelecimento/todos",
+        element: <EstablishmentListPage />,
       },
       {
         path: "/painel/curadoria",
